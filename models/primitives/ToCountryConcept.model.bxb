@@ -1,0 +1,4 @@
+enum (ToCountryConcept) {
+  description (Country to which the letter is sent.)
+  role-of (CountryConcept)
+}

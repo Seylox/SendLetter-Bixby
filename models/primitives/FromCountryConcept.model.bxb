@@ -1,0 +1,4 @@
+enum (FromCountryConcept) {
+  description (Country in which the letter originates.)
+  role-of (CountryConcept)
+}

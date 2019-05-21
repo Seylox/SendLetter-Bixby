@@ -1,0 +1,27 @@
+result-view {
+  match {
+    SendLetterResponseConcept (sendLetterResponse)
+  }
+  render {
+    layout {
+      section {
+        content {
+          paragraph {
+            style (Detail_M)
+            value ("Sending a letter from #{value(sendLetterResponse.fromCountry)} to #{value(sendLetterResponse.toCountry)} with the following text:")
+          }
+          divider
+          paragraph {
+            style (Detail_M)
+            value ("#{value(sendLetterResponse.letterContent)}")
+          }
+          divider
+          paragraph {
+            style (Detail_L)
+            value ("#{value(sendLetterResponse.letterCost)}")
+          }
+        }
+      }
+    }
+  }
+}

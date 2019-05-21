@@ -1,0 +1,3 @@
+text (LetterCostConcept) {
+  description (Contains a description how much the cost of the letter is.)
+}

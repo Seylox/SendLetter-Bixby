@@ -1,0 +1,8 @@
+endpoints {
+  action-endpoints {
+    action-endpoint (SendLetter) {
+      accepted-inputs (fromCountry, toCountry, letterContent)
+      local-endpoint ("SendLetter.js")
+    }
+  }
+}

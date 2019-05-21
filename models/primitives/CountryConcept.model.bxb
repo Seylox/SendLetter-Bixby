@@ -1,0 +1,9 @@
+enum (CountryConcept) {
+  description (Country that can be used for sending letters from and to.)
+  symbol (Austria)
+  symbol (South Korea)
+  symbol (USA)
+  symbol (Germany)
+  symbol (France)
+  symbol (Spain)
+}

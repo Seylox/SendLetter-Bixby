@@ -1,0 +1,22 @@
+action (SendLetter) {
+  description (Sends a Letter from one country to another and calculates the cost based on the letter content length.)
+  type (Calculation)
+  collect {
+    input (fromCountry) {
+      type (FromCountryConcept)
+      min (Required)
+      max (One)
+    }
+    input (toCountry) {
+      type (ToCountryConcept)
+      min (Required)
+      max (One)
+    }
+    input (letterContent) {
+      type (LetterContentConcept)
+      min (Required)
+      max (One)
+    }
+  }
+  output (SendLetterResponseConcept)
+}

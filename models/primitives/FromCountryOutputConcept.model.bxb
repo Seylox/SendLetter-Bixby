@@ -1,0 +1,3 @@
+text (FromCountryOutputConcept) {
+  description (Text which is written on the letter.)
+}

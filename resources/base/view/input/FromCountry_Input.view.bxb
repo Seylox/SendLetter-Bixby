@@ -1,5 +1,5 @@
 input-view {
-  match: FromCountryConcept(this)
+  match: FromCountryInputConcept(this)
   message {
     template ("Select the country this letter will be sent from")
   }

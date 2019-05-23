@@ -3,43 +3,43 @@ action (SendLetter) {
   type (Calculation)
   collect {
     input (fromCountry) {
-      type (FromCountryConcept)
+      type (FromCountryInputConcept)
       min (Required)
       max (One)
       default-init {
         intent {
-          goal: FromCountryConcept
-          value-set: FromCountryConcept {
-            FromCountryConcept(Germany)
-            FromCountryConcept(South Korea)
-            FromCountryConcept(USA)
-            FromCountryConcept(Spain)
-            FromCountryConcept(Austria)
-            FromCountryConcept(France)
+          goal: FromCountryInputConcept
+          value-set: FromCountryInputConcept {
+            FromCountryInputConcept(Germany)
+            FromCountryInputConcept(South Korea)
+            FromCountryInputConcept(USA)
+            FromCountryInputConcept(Spain)
+            FromCountryInputConcept(Austria)
+            FromCountryInputConcept(France)
           }
         }
       }
     }
     input (toCountry) {
-      type (ToCountryConcept)
+      type (ToCountryInputConcept)
       min (Required)
       max (One)
       default-init {
         intent {
-          goal: ToCountryConcept
-          value-set: ToCountryConcept {
-            ToCountryConcept(Austria)
-            ToCountryConcept(South Korea)
-            ToCountryConcept(USA)
-            ToCountryConcept(Spain)
-            ToCountryConcept(Germany)
-            ToCountryConcept(France)
+          goal: ToCountryInputConcept
+          value-set: ToCountryInputConcept {
+            ToCountryInputConcept(Austria)
+            ToCountryInputConcept(South Korea)
+            ToCountryInputConcept(USA)
+            ToCountryInputConcept(Spain)
+            ToCountryInputConcept(Germany)
+            ToCountryInputConcept(France)
           }
         }
       }
     }
     input (letterContent) {
-      type (LetterContentConcept)
+      type (LetterContentInputConcept)
       min (Required)
       max (One)
     }

@@ -1,12 +1,12 @@
 input-view {
-  match: LetterContentConcept(this)
+  match: LetterContentInputConcept(this)
   message {
     template ("Write the content of the letter.")
   }
   render {
     form {
       on-submit {
-        goal: LetterContentConcept
+        goal: LetterContentInputConcept
         value {
           viv.core.FormElement(letterContent)
         }
@@ -15,7 +15,7 @@ input-view {
         textarea {
           id (letterContent)
           label ("Letter Content")
-          type (LetterContentConcept)
+          type (LetterContentInputConcept)
           value ("#{value(this)}")
         }
       }

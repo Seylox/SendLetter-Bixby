@@ -6,11 +6,37 @@ action (SendLetter) {
       type (FromCountryConcept)
       min (Required)
       max (One)
+      default-init {
+        intent {
+          goal: FromCountryConcept
+          value-set: FromCountryConcept {
+            FromCountryConcept(Germany)
+            FromCountryConcept(South Korea)
+            FromCountryConcept(USA)
+            FromCountryConcept(Spain)
+            FromCountryConcept(Austria)
+            FromCountryConcept(France)
+          }
+        }
+      }
     }
     input (toCountry) {
       type (ToCountryConcept)
       min (Required)
       max (One)
+      default-init {
+        intent {
+          goal: ToCountryConcept
+          value-set: ToCountryConcept {
+            ToCountryConcept(Austria)
+            ToCountryConcept(South Korea)
+            ToCountryConcept(USA)
+            ToCountryConcept(Spain)
+            ToCountryConcept(Germany)
+            ToCountryConcept(France)
+          }
+        }
+      }
     }
     input (letterContent) {
       type (LetterContentConcept)

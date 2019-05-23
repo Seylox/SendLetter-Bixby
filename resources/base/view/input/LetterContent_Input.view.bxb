@@ -1,0 +1,24 @@
+input-view {
+  match: LetterContentConcept(this)
+  message {
+    template ("Write the content of the letter.")
+  }
+  render {
+    form {
+      on-submit {
+        goal: LetterContentConcept
+        value {
+          viv.core.FormElement(letterContent)
+        }
+      }
+      elements {
+        textarea {
+          id (letterContent)
+          label ("Letter Content")
+          type (LetterContentConcept)
+          value ("#{value(this)}")
+        }
+      }
+    }
+  }
+}

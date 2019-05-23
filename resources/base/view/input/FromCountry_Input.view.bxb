@@ -1,0 +1,13 @@
+input-view {
+  match: FromCountryConcept(this)
+  message {
+    template ("Select the country this letter will be sent from")
+  }
+  render {
+    selection-of (this) {
+      where-each (fromCountry) {
+        // default-layout used
+      }
+    }
+  }
+}

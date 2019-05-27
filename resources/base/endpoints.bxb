@@ -4,5 +4,9 @@ endpoints {
       accepted-inputs (fromCountry, toCountry, letterContent)
       local-endpoint ("SendLetter.js")
     }
+    action-endpoint (FindCountry) {
+      accepted-inputs (searchCountry)
+      local-endpoint ("FindCountry.js")
+    }
   }
 }

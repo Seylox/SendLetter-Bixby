@@ -1,0 +1,37 @@
+action (ConstructSendLetterRequest) {
+  description (Construct a SendLetterRequestConcept.)
+  type (Constructor)
+  collect {
+    input (fromCountry) {
+      type (FromCountryInputConcept)
+      min (Required) max (One)
+      default-init {
+        intent {
+          goal: FindCountry
+        }
+      }
+    }
+    input (toCountry) {
+      type (ToCountryInputConcept)
+      min (Required) max (One)
+      default-init {
+        intent {
+          goal: FindCountry
+        }
+      }
+    }
+    input (letterContent) {
+      type (LetterContentInputConcept)
+      min (Required) max (One)
+    }
+  }
+  output (SendLetterRequestConcept) {
+    evaluate {
+      SendLetterRequestConcept {
+        fromCountry: $expr(fromCountry)
+        toCountry: $expr(toCountry)
+        letterContent: $expr(letterContent)
+      }
+    }
+  }
+}

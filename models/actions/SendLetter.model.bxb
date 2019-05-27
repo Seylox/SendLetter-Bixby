@@ -8,15 +8,7 @@ action (SendLetter) {
       max (One)
       default-init {
         intent {
-          goal: FromCountryInputConcept
-          value-set: FromCountryInputConcept {
-            FromCountryInputConcept(Germany)
-            FromCountryInputConcept(South Korea)
-            FromCountryInputConcept(USA)
-            FromCountryInputConcept(Spain)
-            FromCountryInputConcept(Austria)
-            FromCountryInputConcept(France)
-          }
+          goal: FindCountry
         }
       }
     }
@@ -26,15 +18,7 @@ action (SendLetter) {
       max (One)
       default-init {
         intent {
-          goal: ToCountryInputConcept
-          value-set: ToCountryInputConcept {
-            ToCountryInputConcept(Austria)
-            ToCountryInputConcept(South Korea)
-            ToCountryInputConcept(USA)
-            ToCountryInputConcept(Spain)
-            ToCountryInputConcept(Germany)
-            ToCountryInputConcept(France)
-          }
+          goal: FindCountry
         }
       }
     }

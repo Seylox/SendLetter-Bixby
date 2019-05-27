@@ -5,7 +5,7 @@ input-view {
   }
   render {
     selection-of (this) {
-      where-each (fromCountry) {
+      where-each (countryName) {
         // default-layout used
       }
     }

@@ -1,4 +1,4 @@
-enum (ToCountryOutputConcept) {
+structure (ToCountryOutputConcept) {
   description (Country to which the letter is sent.)
   role-of (CountryConcept)
 }

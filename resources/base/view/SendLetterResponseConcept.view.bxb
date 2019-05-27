@@ -8,7 +8,7 @@ result-view {
         content {
           paragraph {
             style (Detail_M)
-            value ("Sending a letter from #{value(sendLetterResponse.fromCountry)} to #{value(sendLetterResponse.toCountry)} with the following text:")
+            value ("Sending a letter from #{value(sendLetterResponse.fromCountry.countryName)} to #{value(sendLetterResponse.toCountry.countryName)} with the following text:")
           }
           divider
           paragraph {

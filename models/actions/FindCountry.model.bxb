@@ -1,0 +1,12 @@
+action (FindCountry) {
+  description (Return a CountryConcept)
+  type (Search)
+  collect {
+    input (searchCountry) {
+      type (CountryNameConcept)
+      min (Optional)
+      max (One)
+    }
+  }
+  output (CountryConcept)
+}

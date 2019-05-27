@@ -1,0 +1,4 @@
+dialog (Value) {
+  match: CountryConcept (this)
+  template("#{value(this.countryName)}")
+}

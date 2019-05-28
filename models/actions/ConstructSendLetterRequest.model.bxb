@@ -4,28 +4,92 @@ action (ConstructSendLetterRequest) {
   collect {
     input (fromCountry) {
       type (FromCountryInputConcept)
-      min (Required) max (One)
-      default-init {
-        intent {
-          goal: FindCountry
-        }
-      }
+      min (Optional) max (One)
     }
     input (toCountry) {
       type (ToCountryInputConcept)
-      min (Required) max (One)
-      default-init {
-        intent {
-          goal: FindCountry
-        }
-      }
+      min (Optional) max (One)
     }
     input (letterContent) {
       type (LetterContentInputConcept)
-      min (Required) max (One)
+      min (Optional) max (One)
     }
   }
   output (SendLetterRequestConcept) {
+//     on-empty {
+//       if (exists(letterContent) && !exists(fromCountry) && !exists(toCountry)) {
+//         // TODO assume fromCountry, ask toCountry
+//         ordered-effects {
+//           replace (fromCountry) {
+//             intent {
+//               goal: FromCountryInputConcept {
+//                 countryName: CountryNameConcept(Austria)
+//               }
+//             }
+//           }
+//           replace (toCountry) {
+//             intent {
+//               goal: FindCountry
+//             }
+//           }
+//         }
+//         
+//       } else-if (exists(fromCountry) && !exists(toCountry) && !exists(letterContent)) {
+//         // TODO assume toCountry, ask letterContent
+//         ordered-effects {
+//           replace (toCountry) {
+//             intent {
+//               goal: ToCountryInputConcept {
+//                 countryName: CountryNameConcept(Austria)
+//               }
+//             }
+//           }
+//           replace (letterContent) {
+//             intent {
+//               goal: LetterContentInputConcept
+//             }
+//           }
+//         }
+//         
+//       } else-if (exists(toCountry) && !exists(letterContent) && !exists(fromCountry)) {
+//         // TODO assume fromCountry, ask letterContent
+//         ordered-effects {
+//           replace (fromCountry) {
+//             intent {
+//               goal: FromCountryInputConcept {
+//                 countryName: CountryNameConcept(Austria)
+//               }
+//             }
+//           }
+//           replace (letterContent) {
+//             intent {
+//               goal: LetterContentInputConcept("replacement text")
+//             }
+//           }
+//         }
+//         
+//       } else {
+//         // ask everything
+//         ordered-effects {
+//           replace (fromCountry) {
+//             intent {
+//               goal: FindCountry
+//             }
+//           }
+//           replace (toCountry) {
+//             intent {
+//               goal: FindCountry
+//             }
+//           }
+//           replace (letterContent) {
+//             intent {
+//               goal: LetterContentInputConcept ("placeholder text")
+//             }
+//           }
+//         }
+//         
+//       }
+//     }
     evaluate {
       SendLetterRequestConcept {
         fromCountry: $expr(fromCountry)

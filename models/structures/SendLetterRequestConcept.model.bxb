@@ -2,17 +2,20 @@ structure (SendLetterRequestConcept) {
   description (Structure containing fromCountry, toCountry and letterContent, all necessary to calculate the letterCost)
   property (fromCountry) {
     type (FromCountryInputConcept)
-    min (Required)
+    min (Optional)
     max (One)
+    visibility (Private)
   }
   property (toCountry) {
     type (ToCountryInputConcept)
-    min (Required)
+    min (Optional)
     max (One)
+    visibility (Private)
   }
   property (letterContent) {
     type (LetterContentInputConcept)
-    min (Required)
+    min (Optional)
     max (One)
+    visibility (Private)
   }
 }

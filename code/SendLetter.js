@@ -1,6 +1,10 @@
 var console = require('console')
 
-module.exports.function = function sendLetter (fromCountry, toCountry, letterContent) {
+module.exports.function = function sendLetter (sendLetterRequest) {
+  
+  fromCountry = sendLetterRequest.fromCountry
+  toCountry = sendLetterRequest.toCountry
+  letterContent = sendLetterRequest.letterContent
   
   var letterCost = "The basic letter costs $15"
   if (letterContent.length > 50) {

@@ -2,30 +2,90 @@ action (SendLetter) {
   description (Sends a Letter from one country to another and calculates the cost based on the letter content length.)
   type (Calculation)
   collect {
-    input (fromCountry) {
-      type (FromCountryInputConcept)
+    input (sendLetterRequest) {
+      type (SendLetterRequestConcept)
       min (Required)
       max (One)
       default-init {
         intent {
-          goal: FindCountry
+          goal: ConstructSendLetterRequest
         }
       }
-    }
-    input (toCountry) {
-      type (ToCountryInputConcept)
-      min (Required)
-      max (One)
-      default-init {
-        intent {
-          goal: FindCountry
+      validate {
+        // NO source, NO destination, NO text -> else!
+        if (!exists(sendLetterRequest.fromCountry) && !exists(sendLetterRequest.toCountry) && exists(sendLetterRequest.letterContent)) {
+          // given content -> assume fromCountry, ask toCountry
+          replan {
+            intent {
+              goal: SendLetterRequestConcept
+              value: FromCountryInputConcept {
+                countryName: CountryNameConcept(Austria)
+              }
+              subplan {
+                goal: ToCountryInputConcept
+              }
+              value: $expr(sendLetterRequest.letterContent)
+            }
+          }
+        } else-if (!exists(sendLetterRequest.fromCountry) && exists(sendLetterRequest.toCountry) && !exists(sendLetterRequest.letterContent)) {
+          // given toCountry -> assume fromCountry, ask content
+          replan {
+            intent {
+              goal: SendLetterRequestConcept
+              value: FromCountryInputConcept {
+                countryName: CountryNameConcept(Austria)
+              }
+              value: $expr(sendLetterRequest.toCountry)
+              subplan {
+                goal: LetterContentInputConcept
+              }
+            }
+          }
+        } else-if (exists(sendLetterRequest.fromCountry) && !exists(sendLetterRequest.toCountry) && !exists(sendLetterRequest.letterContent)) {
+          // given fromCountry -> assume toCountry, ask content
+          replan {
+            intent {
+              goal: SendLetterRequestConcept
+              value: $expr(sendLetterRequest.fromCountry)
+              value: ToCountryInputConcept {
+                countryName: CountryNameConcept(Austria)
+              }
+              subplan {
+                goal: LetterContentInputConcept
+              }
+            }
+          }
+        } else-if (!exists(sendLetterRequest.fromCountry) && exists(sendLetterRequest.toCountry) && exists(sendLetterRequest.letterContent)) {
+          // given content, toCountry -> assume fromCountry
+          replan {
+            intent {
+              goal: SendLetterRequestConcept
+              value: FromCountryInputConcept {
+                countryName: CountryNameConcept(Austria)
+              }
+              value: $expr(sendLetterRequest.toCountry)
+              value: $expr(sendLetterRequest.letterContent)
+            }
+          }
+        } else {
+          // for everything else we ask the user everything.
+          replan {
+            intent {
+              goal: SendLetterRequestConcept
+              subplan {
+                goal: FromCountryInputConcept
+              }
+              subplan {
+                goal: ToCountryInputConcept
+              }
+              subplan {
+                goal: LetterContentInputConcept
+              }
+            }
+          }
         }
+        
       }
-    }
-    input (letterContent) {
-      type (LetterContentInputConcept)
-      min (Required)
-      max (One)
     }
   }
   output (SendLetterResponseConcept)
